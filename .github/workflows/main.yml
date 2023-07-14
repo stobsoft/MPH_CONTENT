@@ -19,7 +19,7 @@ jobs:
       - name: Get Repo
         uses: actions/checkout@v2
     
-      - uses: 'actions/setup-python@v2'
+      - uses: 'actions/setup-python@v3'
         with:
           # CAUTION: Replace this hardcoded "3.9" string with the
           # major and minor version of your desired Python interpreter.
