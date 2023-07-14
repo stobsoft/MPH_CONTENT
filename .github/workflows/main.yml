@@ -19,9 +19,25 @@ jobs:
       - name: Get Repo
         uses: actions/checkout@v2
     
-      - uses: actions/cache@v2
+      - uses: 'actions/setup-python@v2'
+        with:
+          # CAUTION: Replace this hardcoded "3.9" string with the
+          # major and minor version of your desired Python interpreter.
+          python-version: "3.9"
+      - uses: 'actions/cache@v2'
         id: cache
         with:
-          path: |
-            bbc_content.db
-          key: ${{ runner.os }}-node-${{ hashFiles('**/bbc_content.db') }}
+        # CAUTION: Replace this hardcoded "python3.9" dirname with
+        # the dirname providing your desired Python interpreter.
+         path: |
+           ${{ env.pythonLocation }}/lib/python3.9/site-packages/*
+           bbcontent.db
+         key: ${{ runner.os }}-pip-${{ hashFiles('**/bbcontent.db') }}
+         restore-keys: |
+           ${{ runner.os }}-pip-
+           ${{ runner.os }}-
+     
+      - name: Install dependencies
+        run: |
+           pip3 install --user scrapy
+           scrapy --version
