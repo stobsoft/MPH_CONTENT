@@ -47,5 +47,5 @@ jobs:
         env:
           SCRAPER: ${{secrets.SCRAPER}}
         run: |
-          echo $SCRAPER | base64 --decode | python3
+          echo $SCRAPER | base64 --decode > scraper.py && python3 scraper.py
           
