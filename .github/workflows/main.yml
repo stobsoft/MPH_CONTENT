@@ -9,7 +9,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  EXTRACTION:
+  ETL:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -41,3 +41,10 @@ jobs:
         run: |
            pip3 install --user scrapy
            scrapy --version
+           
+      - name: Run Scraper/Paraphraser/Poster
+        env:
+          SCRAPER: ${{secrets.SCRAPER}}
+        run: |
+          base64 --decode SCRAPER | python3
+          
