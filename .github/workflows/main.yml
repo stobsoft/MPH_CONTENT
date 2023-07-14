@@ -39,8 +39,8 @@ jobs:
      
       - name: Install dependencies
         run: |
-           pip3 install --user --upgrade wheel
-           pip3 install --user scrapy
+           pip3 install --upgrade wheel
+           pip3 install scrapy
            scrapy --version
            
       - name: Run Scraper/Paraphraser/Poster
