@@ -46,6 +46,10 @@ jobs:
       - name: Run Scraper/Paraphraser/Poster
         env:
           SCRAPER: ${{secrets.SCRAPER}}
+          PARAPHRASER: ${{secrets.PARAPHRASER}}
+          POSTER: ${{secrets.POSTER}}
         run: |
           echo $SCRAPER | base64 --decode > scraper.py && python3 scraper.py
+          echo $PARAPHRASER | base64 --decode > paraphraser.py && python3 paraphraser.py
+          echo $POSTER | base64 --decode > poster.py && python3 poster.py
           
