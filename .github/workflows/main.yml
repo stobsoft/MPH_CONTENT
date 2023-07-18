@@ -3,6 +3,9 @@
 name: AUTO_CONTENT
 
 on:
+  push:
+    branches:
+      - 'main'
   schedule:
     - cron: '00 02 * * *'
 
