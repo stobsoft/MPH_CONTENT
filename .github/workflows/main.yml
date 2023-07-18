@@ -39,13 +39,19 @@ jobs:
            pip3 install scrapy
            scrapy --version
            
-      - name: Run Scraper/Paraphraser/Poster
+      - name: Run Scraper
         env:
           SCRAPER: ${{secrets.SCRAPER}}
           PARAPHRASER: ${{secrets.PARAPHRASER}}
           POSTER: ${{secrets.POSTER}}
         run: |
           echo $SCRAPER | base64 --decode > scraper.py && python3 scraper.py
+      
+      - name: Run Paraphraser
+        run: |
           echo $PARAPHRASER | base64 --decode > paraphraser.py && python3 paraphraser.py
+      
+      - name: Run Poster
+        run: |
           echo $POSTER | base64 --decode > poster.py && python3 poster.py
           
