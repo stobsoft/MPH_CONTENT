@@ -45,16 +45,18 @@ jobs:
       - name: Run Scraper
         env:
           SCRAPER: ${{secrets.SCRAPER}}
-          PARAPHRASER: ${{secrets.PARAPHRASER}}
-          POSTER: ${{secrets.POSTER}}
         run: |
           echo $SCRAPER | base64 --decode > scraper.py && python3 scraper.py
       
       - name: Run Paraphraser
+        env:
+          PARAPHRASER: ${{secrets.PARAPHRASER}}
         run: |
           echo $PARAPHRASER | base64 --decode > paraphraser.py && python3 paraphraser.py
       
       - name: Run Poster
+        env:
+          POSTER: ${{secrets.POSTER}}
         run: |
           echo $POSTER | base64 --decode > poster.py && python3 poster.py
           
